@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò Chơi Tài Xỉu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        h1 {
+            color: #35424a;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background: #35424a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #444;
+        }
+        .dice {
+            font-size: 50px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trò Chơi Tài Xỉu</h1>
+    <div class="container">
+        <p>Chọn Tài (Tổng từ 11) hoặc Xỉu (Tổng từ 10):</p>
+        <button onclick="playGame('tai')">Tài</button>
+        <button onclick="playGame('xiu')">Xỉu</button>
+        <div class="dice" id="dice"></div>
+        <p id="result"></p>
+    </div>
+    <script>
+        function playGame(bet) {
+            const dice1 = Math.floor(Math.random() * 6) + 1;
+            const dice2 = Math.floor(Math.random() * 6) + 1;
+            const dice3 = Math.floor(Math.random() * 6) + 1;
+            const total = dice1 + dice2 + dice3;
+
+            document.getElementById('dice').innerText = `Xúc xắc: ${dice1}, ${dice2}, ${dice3}`;
+            
+            if ((bet === 'tai' && total >= 11) || (bet === 'xiu' && total <= 10)) {
+                document.getElementById('result').innerText = `Bạn thắng! Tổng điểm: ${total}`;
+            } else {
+                document.getElementById('result').innerText = `Bạn thua! Tổng điểm: ${total}`;
+            }
+        }
+    </script>
+</body>
+</html>
